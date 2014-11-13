@@ -5,6 +5,7 @@ global $wpdb;
 define('QD_TABLE_PREFIX', 'qd_');
 define('QD_STUDENT_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'hocsinh');
 define('QD_LOP_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'lop');
+define('QD_OPTION_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'option');
 register_activation_hook(QD_FILE, 'qd_create_plugin_tables' );
 function qd_create_plugin_tables()
 {
@@ -32,5 +33,17 @@ function qd_create_plugin_tables()
       UNIQUE KEY id (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 	dbDelta( $sql );
+    //option
+	$table_name = QD_OPTION_TABLE;
+	$sql = "CREATE TABLE IF NOT EXISTS `$table_name` (
+      `id` int(11) NOT NULL,
+      `key` varchar(100) NOT NULL,
+      `value` text,
+      PRIMARY KEY (`id`),
+      UNIQUE KEY `key` (`key`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
+	dbDelta( $sql );
+    
+    
 	
 }

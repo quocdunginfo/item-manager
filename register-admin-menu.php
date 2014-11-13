@@ -13,6 +13,7 @@ function qd_register_custom_menu_page(){
     add_submenu_page( 'qd_main_page', 'Xem danh sách lớp', 'Xem danh sách lớp', 'manage_options', 'qd_sub_page_3', 'qd_fn_sub_page_3' );
     
     add_submenu_page( 'qd_main_page', 'Test', 'Test', 'manage_options', 'qd_sub_page_4', 'qd_fn_sub_page_4' );
+    add_submenu_page( 'qd_main_page', 'Option', 'Option', 'manage_options', 'qd_sub_page_5', 'qd_fn_sub_page_5' );
 }
 
 function qd_custom_menu_page(){
@@ -37,4 +38,9 @@ function qd_fn_sub_page_4()
 {
     //call controller
     require_once(QD_CONTROLLERS.'test.php');
+}
+function qd_fn_sub_page_5()
+{
+    //call controller
+    require_once(QD_CONTROLLERS.'option.php');
 }

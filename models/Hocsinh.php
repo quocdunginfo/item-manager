@@ -32,7 +32,14 @@ class Hocsinh extends ActiveRecord\Model
     
     public function qd_getAvatarLink()
     {
-        return wp_get_attachment_url($this->avatar);
+        if($this->avatar!==null)
+        {
+            return wp_get_attachment_url($this->avatar);
+        }
+        else
+        {
+            return Option::qd_getDefaultAvatarLink();
+        }
     }
 }
 
