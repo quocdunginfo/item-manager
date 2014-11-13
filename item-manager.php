@@ -22,3 +22,5 @@ require_once(QD_PLUGIN_DIR . 'register-admin-menu.php');
 require_once(QD_PLUGIN_DIR . 'menu-nav-provider.php');
 //loading widgets
 require_once(QD_WIDGET_DIR . 'index.php');
+//loading notification
+require_once(QD_PLUGIN_DIR . 'notification/index.php');

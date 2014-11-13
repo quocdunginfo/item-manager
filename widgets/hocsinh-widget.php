@@ -30,7 +30,9 @@ class qd_wpb_widget extends WP_Widget {
         ?>
             <div>
                 <img src="<?=$item->qd_getAvatarLink()?>" width="50" height="50" />
-                <?=$item->name?>
+                <a href="<?=do_shortcode('[qd_hocsinh_link id="'.$item->id.'"]')?>">
+                    <?=$item->name?>
+                </a>
             </div>
         <?php
         endforeach;
