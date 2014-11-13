@@ -29,5 +29,10 @@ class Hocsinh extends ActiveRecord\Model
     public function set_lop($lop) {
 		$this->lop_id = $lop->id;
     }
+    
+    public function qd_getAvatarLink()
+    {
+        return wp_get_attachment_url($this->avatar);
+    }
 }
 

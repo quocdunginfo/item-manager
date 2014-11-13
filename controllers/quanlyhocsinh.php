@@ -9,6 +9,7 @@ if(isset($_POST['submit']))
     $tmp = Hocsinh::find($_POST['id']);
     $tmp->name = $_POST['hoten'];
     $tmp->lop->name = $_POST['lop'];
+    $tmp->avatar = $_POST['avatar'];
     $tmp->lop->save();
     $tmp->save();
     $view_arg['msg'] = 'Cập nhật thành công!';
