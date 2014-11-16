@@ -3,13 +3,8 @@ class Qdskill extends ActiveRecord\Model
 {
 	// order belongs to a person
 	static $belongs_to = array(
-		array('avatar', 'class_name' => 'Qdattachment', 'foreign_key' => 'id')
+		array('profile', 'class_name' => 'Qdprofile')
 	);
-    // order belongs to a person
-	static $has_many = array(
-        array('profiles', 'class_name' => 'Qdprofile', 'through' => 'profile_skills'),
-        array('profile_skills', 'class_name' => 'Qdprofile_skill')
-    );
 	
 	# explicit table name since our table is not "books" 
     static $table_name = 'wp_qd_skill';
@@ -39,6 +34,12 @@ class Qdskill extends ActiveRecord\Model
             $tmp[$count] = array();
             $tmp[$count]['id'] = $item->id;
             $tmp[$count]['title'] = $item->title;
+            $tmp[$count]['desc'] = $item->desc;
+            $tmp[$count]['percent'] = $item->percent;
+            $tmp[$count]['avatar'] = $item->avatar;
+            $tmp[$count]['_avatar_link'] = $item->qd_getAvatarLink();
+            $tmp[$count]['qdprofile_id'] = $item->qdprofile_id;
+            $tmp[$count]['_qdprofile_nickname'] = $item->profile->nickname;
             
             $count++;
             
@@ -59,6 +60,28 @@ class Qdskill extends ActiveRecord\Model
             
         }
         return json_encode($tmp);
-    } 
+    }
+    public function qd_findIndexIn($list_skill)
+    {
+        if($this->id>0)
+        {
+            for($i=0;$i<count($list_skill);$i++)
+            {
+                if($list_skill[$i]->id===$this->id)
+                {
+                    return $i;
+                }
+            }
+        }
+        return -1;
+    }
+    public function qd_getAvatarLink()
+    {
+        if($this->avatar>0)
+        {
+            return wp_get_attachment_url($this->avatar);
+        }
+        return '';
+    }
 }
 

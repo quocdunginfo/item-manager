@@ -1,5 +1,5 @@
 <?php
-add_action('admin_menu', 'qd_notification_bubble_in_admin_menu');
+//add_action('admin_menu', 'qd_notification_bubble_in_admin_menu');
 
 function qd_notification_bubble_in_admin_menu() {
     global $menu;

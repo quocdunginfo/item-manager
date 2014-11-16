@@ -33,9 +33,9 @@ function qd_theme_name_scripts() {
         
         wp_enqueue_script( 'script-name-13', plugins_url('plugin/jqwidgets/jqxnotification.js', QD_FILE), array(), '1.0.0', true );
       
-        wp_enqueue_script( 'script-name-14', plugins_url('plugin/jqwidgets/jqxscrollbar.js', QD_FILE), array(), '1.0.0', true );
-        wp_enqueue_script( 'script-name-15', plugins_url('plugin/jqwidgets/jqxlistbox.js', QD_FILE), array(), '1.0.0', true );
-        wp_enqueue_script( 'script-name-16', plugins_url('plugin/jqwidgets/jqxdropdownlist.js', QD_FILE), array(), '1.0.0', true );
+        //wp_enqueue_script( 'script-name-14', plugins_url('plugin/jqwidgets/jqxscrollbar.js', QD_FILE), array(), '1.0.0', true );
+        //wp_enqueue_script( 'script-name-16', plugins_url('plugin/jqwidgets/jqxdropdownlist.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-16', plugins_url('plugin/jqwidgets/jqxcombobox.js', QD_FILE), array(), '1.0.0', true );
         
     }
 }

@@ -1,7 +1,7 @@
 <?php
 function qd_view_1($arg)
 {
-    $tmp = Qdprofile::toJSON($arg['list_obj']);
+    $tmp = Qdprofile::toJSON2($arg['list_obj']);
     //echo $tmp;
     ?>
     
@@ -14,51 +14,38 @@ function qd_view_1($arg)
                 jQuery("#qdSubmit").val("Add");
             });
         });
-        function qd_setSkill()
-        {
-            var value = jQuery('#qdSkill').jqxDropDownList('getSelectedItem');
-            jQuery("#qdHiddenSkill").val(value.value);
-        }
-        
         </script>
         <button class="jqx-info" id="qdNew">New</button>
         <br />
-        <form action="" method="post" id="qdForm" onsubmit="qd_setSkill()">
+        <form action="" method="post" id="qdForm">
         <input type="hidden" name="id" value="<?=$arg['obj']->id?>" id="qdID" />
         <input type="hidden" name="page" value="<?=$arg['page']?>" id="qdPage" />
         <input type="hidden" name="skill_id" value="" id="qdHiddenSkill" />
-        <label for="qdnickname">Nick name:</label>
+        <label for="qdNickname">Nick name:</label>
         <input type="text" value="<?=$arg['obj']->nickname?>" name="nickname" id="qdNickname" />
         <br />
-        <label for="qdSkill" style="float: left;">Skills: </label>
-        <script type="text/javascript">
-            jQuery(document).ready(function () {
-                var data2 = '<?=Qdskill::toJSON2($arg['list_skill'])?>';
-                var source =
-                {
-                    datatype: "json",
-                    datafields: [
-                        { name: 'id' },
-                        { name: 'title' }
-                    ],
-                    localdata: data2
-                };
-                var dataAdapter = new $.jqx.dataAdapter(source);
-                // Create a jqxDropDownList
-                jQuery("#qdSkill").jqxDropDownList({
-                    selectedIndex: 0, source: dataAdapter, 
-                    displayMember: "title", 
-                    valueMember: "id", 
-                    width: 200, 
-                    height: 25
-                });
-            });
-        </script>
-        <div id="qdSkill" style="float: left;">
-        </div>
-        <input name="submit2" type="submit" id="qdAddSkill" class="jqx-info" style="float: left;" value="Add skill to profile">
-        <div style="clear: both;"></div>
-        <hr />
+        <label for="qdFullname">Full name:</label>
+        <input type="text" value="<?=$arg['obj']->fullname?>" name="fullname" id="qdFullname" />
+        <br />
+        <label for="qdSlogan">Slogan:</label>
+        <input type="text" value="<?=$arg['obj']->slogan?>" name="slogan" id="qdSlogan" />
+        <br />
+        <label for="qdBlog">Blog:</label>
+        <input type="text" value="<?=$arg['obj']->blog?>" name="blog" id="qdBlog" />
+        <br />
+        <label for="qdRepository">Repository:</label>
+        <input type="text" value="<?=$arg['obj']->repository?>" name="repository" id="qdRepository" />
+        <br />
+        <label for="qdEmail">Email:</label>
+        <input type="text" value="<?=$arg['obj']->email?>" name="email" id="qdEmail" />
+        <br />
+        <label for="qdPhone">Phone:</label>
+        <input type="text" value="<?=$arg['obj']->phone?>" name="phone" id="qdPhone" />
+        <br />
+        <label for="qdAddress">Address:</label>
+        <input type="text" value="<?=$arg['obj']->address?>" name="address" id="qdAddress" />
+        <br />
+
         <script type="text/javascript">
             function qd_loadJsonToSavedList(data)
             {
@@ -80,7 +67,7 @@ function qd_view_1($arg)
                     displayMember: "title", 
                     valueMember: "id", 
                     width: 200, 
-                    height: 250
+                    height: 100
                 });    
             }
             jQuery(document).ready(function () {
@@ -122,6 +109,14 @@ function qd_view_1($arg)
                 datafields: [
                     { name: 'id', type: 'string' },
                     { name: 'nickname', type: 'string' },
+                    { name: 'fullname', type: 'string' },
+                    { name: 'slogan', type: 'string' },
+                    { name: 'blog', type: 'string' },
+                    { name: 'email', type: 'string' },
+                    { name: 'phone', type: 'string' },
+                    { name: 'address', type: 'string' },
+                    { name: 'repository', type: 'string' },
+                    
                     { name: 'skills_JSON', type: 'string' }
                 ],
                 localdata: data
@@ -134,8 +129,8 @@ function qd_view_1($arg)
                 columnsresize: true,
                 columns: [
                     { text: 'ID', datafield: 'id', width: 100},
-                    { text: 'Nick name', datafield: 'nickname'},
-                    { text: 'Skill JSON', datafield: 'skills_JSON'}
+                    { text: 'Nick name', datafield: 'nickname'}//,
+                    //{ text: 'Skill JSON', datafield: 'skills_JSON'}
                 ]
             });
             jQuery("#jqxgrid").jqxGrid('selectionmode', 'singlerow');
@@ -144,6 +139,14 @@ function qd_view_1($arg)
                 var datarow = jQuery("#jqxgrid").jqxGrid('getrowdata', event.args.rowindex);
                 jQuery("#qdID").val(datarow.id);
                 jQuery("#qdNickname").val(datarow.nickname);
+                jQuery("#qdFullname").val(datarow.fullname);
+                jQuery("#qdSlogan").val(datarow.slogan);
+                jQuery("#qdBlog").val(datarow.blog);
+                jQuery("#qdEmail").val(datarow.email);
+                jQuery("#qdPhone").val(datarow.phone);
+                jQuery("#qdAddress").val(datarow.address);
+                jQuery("#qdRepository").val(datarow.repository);
+                
                 jQuery("#qdSubmit").val("Update");
                 //load json to saved listbox
                 qd_loadJsonToSavedList(datarow.skills_JSON);

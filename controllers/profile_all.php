@@ -10,6 +10,14 @@ if(isset($_POST['submit']))
         if($tmp!=null)
         {
             $tmp->nickname = $_POST['nickname'];
+            $tmp->repository = $_POST['repository'];
+            $tmp->blog = $_POST['blog'];
+            $tmp->slogan = $_POST['slogan'];
+            $tmp->address = $_POST['address'];
+            $tmp->email = $_POST['email'];
+            $tmp->phone = $_POST['phone'];
+            $tmp->fullname = $_POST['fullname'];
+            
             $tmp->save();
             $view_arg['page'] = $_POST['page'];
             $view_arg['msg'] = 'Cập nhật thành công!';
@@ -24,33 +32,19 @@ if(isset($_POST['submit']))
     {
         $tmp = new Qdprofile();
         $tmp->nickname = $_POST['nickname'];
+        $tmp->repository = $_POST['repository'];
+        $tmp->blog = $_POST['blog'];
+        $tmp->slogan = $_POST['slogan'];
+        $tmp->address = $_POST['address'];
+        $tmp->email = $_POST['email'];
+        $tmp->phone = $_POST['phone'];
+        $tmp->fullname = $_POST['fullname'];
+        
         $tmp->save();
         $view_arg['obj'] = $tmp;   
         $view_arg['msg'] = 'Thêm thành công!';
     }
     
-}
-else if(isset($_POST['submit2']))
-{
-    //neu add skill
-    if($_POST['skill_id']>0)
-    {
-        if($_POST['id']>0)
-        {
-            $tmp = Qdprofile::find($_POST['id']);
-            $tmp->qd_addSkill(Qdskill::find($_POST['skill_id']));
-            $view_arg['obj'] = $tmp;   
-            $view_arg['msg'] = 'Gán skill thành công!';
-        }
-        else
-        {
-            $view_arg['msg'] = 'ERROR!';
-        }
-    }
-    else
-    {
-        $view_arg['msg'] = 'ERROR!';
-    }
 }
 else
 {

@@ -2,17 +2,8 @@
 class Qdprofile extends ActiveRecord\Model
 {
 	static $has_many = array(
-        //array('anchors', 'class_name' => 'Qdanchor', 'through' => 'profile_anchors'),
-//        array('profile_anchors', 'class_name' => 'Qdprofile_anchor'),
-//        
-//        array('links', 'class_name' => 'Qdlink', 'through' => 'profile_links'),
-//        array('profile_links', 'class_name' => 'Qdprofile_link'),
-//        
-//        array('attachments', 'class_name' => 'Qdattachment', 'through' => 'profile_attachments'),
-//        array('profile_attachments', 'class_name' => 'Qdprofile_attachment'),
-        
-        array('skills', 'class_name' => 'Qdskill', 'through' => 'profile_skills'),
-        array('profile_skills', 'class_name' => 'Qdprofile_skill'),
+        array('skills', 'class_name' => 'Qdskill'),
+        array('anchors', 'class_name' => 'Qdanchor')
     );
 	# explicit table name since our table is not "books" 
     static $table_name = 'wp_qd_profile';
@@ -42,6 +33,29 @@ class Qdprofile extends ActiveRecord\Model
             $tmp[$count] = array();
             $tmp[$count]['id'] = $item->id;
             $tmp[$count]['nickname'] = $item->nickname;
+            $count++;
+            
+        }
+        return json_encode($tmp);
+    }
+    public static function toJSON2($qdprofile_list)
+    {
+        $tmp = array();
+        $count = 0;
+        foreach($qdprofile_list as $item)
+        {
+            $tmp[$count] = array();
+            $tmp[$count]['id'] = $item->id;
+            $tmp[$count]['nickname'] = $item->nickname;
+            $tmp[$count]['fullname'] = $item->fullname;
+            $tmp[$count]['slogan'] = $item->slogan;
+            $tmp[$count]['email'] = $item->email;
+            $tmp[$count]['phone'] = $item->phone;
+            $tmp[$count]['address'] = $item->address;
+            $tmp[$count]['repository'] = $item->repository;
+            $tmp[$count]['blog'] = $item->blog;
+            
+            
             $tmp[$count]['skills_JSON'] = addslashes(Qdskill::toJSON2($item->skills));
             $count++;
             
@@ -49,25 +63,5 @@ class Qdprofile extends ActiveRecord\Model
         return json_encode($tmp);
     }
     
-    
-    /**
-     * Qdprofile::qd_addSkill()
-     * skill->id>0,
-     * auto save
-     * @param mixed $skill
-     * @return
-     */
-    public function qd_addSkill($skill)
-    {
-        foreach($this->skills as $item)
-        {
-            if($item->id===$skill->id)
-            {
-                return false;
-            }
-        }
-        $tmp = Qdprofile_skill::qd_create($this,$skill);
-        $tmp->save();
-    }
 }
 

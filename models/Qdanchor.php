@@ -1,9 +1,8 @@
 <?php
 class Qdanchor extends ActiveRecord\Model
 {
-	static $has_many = array(
-        array('profiles', 'class_name' => 'Qdprofile', 'through' => 'profile_anchors'),
-        array('profile_anchors', 'class_name' => 'Qdprofile_anchor')
+	static $belongs_to = array(
+        array('profile', 'class_name' => 'Qdprofile', 'foreign_key' => 'profile_id')
     );
 	
 	# explicit table name since our table is not "books" 
