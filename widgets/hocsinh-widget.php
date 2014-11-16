@@ -1,4 +1,5 @@
 <?php
+
 // Creating the widget 
 class qd_wpb_widget extends WP_Widget {
 
@@ -71,4 +72,4 @@ class qd_wpb_widget extends WP_Widget {
 function qd_wpb_load_widget() {
 	register_widget( 'qd_wpb_widget' );
 }
-add_action( 'widgets_init', 'qd_wpb_load_widget' );
+//add_action( 'widgets_init', 'qd_wpb_load_widget' );
