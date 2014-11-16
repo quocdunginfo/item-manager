@@ -2,8 +2,35 @@
 //view arg
 $view_arg = array();
 
-$skill_id = $_POST['skill_id'];
 if(isset($_POST['submit']))
+{
+    if($_POST['id']>0)
+    {
+        $tmp = Qdprofile::find($_POST['id']);
+        if($tmp!=null)
+        {
+            $tmp->nickname = $_POST['nickname'];
+            $tmp->save();
+            $view_arg['page'] = $_POST['page'];
+            $view_arg['msg'] = 'Cập nhật thành công!';
+            $view_arg['obj'] = $tmp;
+        }
+        else
+        {
+            $view_arg['msg'] = 'ERROR!';
+        }
+    }
+    else
+    {
+        $tmp = new Qdprofile();
+        $tmp->nickname = $_POST['nickname'];
+        $tmp->save();
+        $view_arg['obj'] = $tmp;   
+        $view_arg['msg'] = 'Thêm thành công!';
+    }
+    
+}
+else if(isset($_POST['submit2']))
 {
     //neu add skill
     if($_POST['skill_id']>0)
@@ -17,39 +44,12 @@ if(isset($_POST['submit']))
         }
         else
         {
-            $tmp = new Qdprofile();
-            $tmp->nickname = $_POST['nickname'];
-            $tmp->save();
-            $view_arg['obj'] = $tmp;   
-            $view_arg['msg'] = 'Thêm thành công!';
+            $view_arg['msg'] = 'ERROR!';
         }
     }
     else
     {
-        if($_POST['id']>0)
-        {
-            if($tmp!=null)
-            {
-                $tmp = Qdprofile::find($_POST['id']);
-                $tmp->nickname = $_POST['nickname'];
-                $tmp->save();
-                $view_arg['page'] = $_POST['page'];
-                $view_arg['msg'] = 'Cập nhật thành công!';
-                $view_arg['obj'] = $tmp;
-            }
-            else
-            {
-                $view_arg['msg'] = 'ERROR!';
-            }
-        }
-        else
-        {
-            $tmp = new Qdprofile();
-            $tmp->nickname = $_POST['nickname'];
-            $tmp->save();
-            $view_arg['obj'] = $tmp;   
-            $view_arg['msg'] = 'Thêm thành công!';
-        }
+        $view_arg['msg'] = 'ERROR!';
     }
 }
 else

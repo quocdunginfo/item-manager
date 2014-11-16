@@ -56,7 +56,7 @@ function qd_view_1($arg)
         </script>
         <div id="qdSkill" style="float: left;">
         </div>
-        <input name="submit" type="submit" id="qdAddSkill" class="jqx-info" style="float: left;" value="Add skill to profile">
+        <input name="submit2" type="submit" id="qdAddSkill" class="jqx-info" style="float: left;" value="Add skill to profile">
         <div style="clear: both;"></div>
         <hr />
         <script type="text/javascript">
