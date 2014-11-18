@@ -1,5 +1,5 @@
 <?php
-class Qdskill extends ActiveRecord\Model
+class Qdskill extends Qdabstract
 {
 	// order belongs to a person
 	static $belongs_to = array(
@@ -60,20 +60,6 @@ class Qdskill extends ActiveRecord\Model
             
         }
         return json_encode($tmp);
-    }
-    public function qd_findIndexIn($list_skill)
-    {
-        if($this->id>0)
-        {
-            for($i=0;$i<count($list_skill);$i++)
-            {
-                if($list_skill[$i]->id===$this->id)
-                {
-                    return $i;
-                }
-            }
-        }
-        return -1;
     }
     public function qd_getAvatarLink()
     {

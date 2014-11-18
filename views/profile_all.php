@@ -61,40 +61,48 @@ function qd_view_1($arg)
                     ],
                     localdata: data
                 };
-                var dataAdapter = new $.jqx.dataAdapter(source);
+                var dataAdapter = new jQuery.jqx.dataAdapter(source);
                 // Create a jqxListBox
-                jQuery("#qdSavedSkill").jqxListBox({ source: dataAdapter, 
+                jQuery("#qdSkillList").jqxListBox({ source: dataAdapter, 
                     displayMember: "title", 
                     valueMember: "id", 
                     width: 200, 
                     height: 100
                 });    
             }
-            jQuery(document).ready(function () {
-                <?php
-                if(count($obj->skills)>0)
+            function qd_loadJsonToAnchorList(data)
+            {
+                //load JSON for display Skill List
+                //var data = datarow.skills_JSON;
+                // prepare the data
+                var source =
                 {
-                    ?>
-                    qd_loadJsonToSavedList('<?=$obj->skills_JSON?>');
-                    
-                    <?php
-                }
-                else
-                {
-                    ?>
-                    qd_loadJsonToSavedList('[]');
-                    
-                    <?php
-                }
-                
-                
-                ?>
-            });
+                    datatype: "json",
+                    datafields: [
+                        { name: 'id' },
+                        { name: 'title' }
+                    ],
+                    localdata: data
+                };
+                var dataAdapter = new jQuery.jqx.dataAdapter(source);
+                // Create a jqxListBox
+                jQuery("#qdAnchorList").jqxListBox({ source: dataAdapter, 
+                    displayMember: "title", 
+                    valueMember: "id", 
+                    width: 200, 
+                    height: 100
+                });    
+            }
         </script>
-        <div id='qdSavedSkill'>
+        <label for="qdSkillList">Skills:</label>
+        <div id='qdSkillList'>
+        </div>
+        <label for="qdAnchorList">Anchors:</label>
+        <div id='qdAnchorList'>
         </div>
         <hr />
-        
+        <label for="qdActive">Active:</label>
+        <input type="checkbox" value="0" name="active" id="qdActive" />
         <input type="submit" value="Submit" class="jqx-info" name="submit" id="qdSubmit" />
         </form>
     </div>
@@ -117,11 +125,12 @@ function qd_view_1($arg)
                     { name: 'address', type: 'string' },
                     { name: 'repository', type: 'string' },
                     
-                    { name: 'skills_JSON', type: 'string' }
+                    { name: '_skills_JSON', type: 'string' },
+                    { name: '_anchors_JSON', type: 'string' }
                 ],
                 localdata: data
             };
-            var dataAdapter = new $.jqx.dataAdapter(source);
+            var dataAdapter = new jQuery.jqx.dataAdapter(source);
             jQuery("#jqxgrid").jqxGrid(
             {
                 width: 600,
@@ -149,7 +158,8 @@ function qd_view_1($arg)
                 
                 jQuery("#qdSubmit").val("Update");
                 //load json to saved listbox
-                qd_loadJsonToSavedList(datarow.skills_JSON);
+                qd_loadJsonToSavedList(datarow._skills_JSON);
+                qd_loadJsonToAnchorList(datarow._anchors_JSON);
                             
             });
         });

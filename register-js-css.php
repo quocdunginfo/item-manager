@@ -30,12 +30,12 @@ function qd_theme_name_scripts() {
         wp_enqueue_script( 'script-name-11', plugins_url('plugin/jqwidgets/jqxgrid.selection.js', QD_FILE), array(), '1.0.0', true );
         wp_enqueue_script( 'script-name-111', plugins_url('plugin/jqwidgets/jqxgrid.columnsresize.js', QD_FILE), array(), '1.0.0', true );
         wp_enqueue_script( 'script-name-12', plugins_url('plugin/jqwidgets/jqxgrid.edit.js', QD_FILE), array(), '1.0.0', true );
-        
         wp_enqueue_script( 'script-name-13', plugins_url('plugin/jqwidgets/jqxnotification.js', QD_FILE), array(), '1.0.0', true );
-      
-        //wp_enqueue_script( 'script-name-14', plugins_url('plugin/jqwidgets/jqxscrollbar.js', QD_FILE), array(), '1.0.0', true );
-        //wp_enqueue_script( 'script-name-16', plugins_url('plugin/jqwidgets/jqxdropdownlist.js', QD_FILE), array(), '1.0.0', true );
         wp_enqueue_script( 'script-name-16', plugins_url('plugin/jqwidgets/jqxcombobox.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-17', plugins_url('plugin/jqwidgets/jqxdatetimeinput.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-18', plugins_url('plugin/jqwidgets/jqxcalendar.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-19', plugins_url('plugin/jqwidgets/jqxtooltip.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-20', plugins_url('plugin/jqwidgets/globalization/globalize.js', QD_FILE), array(), '1.0.0', true );
         
     }
 }

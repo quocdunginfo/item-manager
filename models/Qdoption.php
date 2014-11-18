@@ -2,6 +2,7 @@
 class Qdoption extends ActiveRecord\Model
 {
 	public static $QD_DEFAULT_AVATAR = 'default_avatar_id';
+    public static $QD_DEFAULT_PROFILE = 'default_profile_id';
     # explicit table name since our table is not "books" 
     static $table_name = 'wp_qd_option';
   
@@ -23,6 +24,14 @@ class Qdoption extends ActiveRecord\Model
             $tmp->value = $value;
         }
         return $tmp->save();
+    }
+    public static function qd_getValueByKey($key)
+    {
+        $tmp = Qdoption::find_by_key($key);
+        if($tmp!=null)
+        {
+            return $tmp->value;
+        }
     }
     public static function qd_requestByKey($key)
     {

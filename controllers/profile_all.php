@@ -17,8 +17,9 @@ if(isset($_POST['submit']))
             $tmp->email = $_POST['email'];
             $tmp->phone = $_POST['phone'];
             $tmp->fullname = $_POST['fullname'];
-            
             $tmp->save();
+            
+            
             $view_arg['page'] = $_POST['page'];
             $view_arg['msg'] = 'Cập nhật thành công!';
             $view_arg['obj'] = $tmp;
@@ -41,6 +42,8 @@ if(isset($_POST['submit']))
         $tmp->fullname = $_POST['fullname'];
         
         $tmp->save();
+        
+        
         $view_arg['obj'] = $tmp;   
         $view_arg['msg'] = 'Thêm thành công!';
     }

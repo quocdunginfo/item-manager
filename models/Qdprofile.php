@@ -56,7 +56,8 @@ class Qdprofile extends ActiveRecord\Model
             $tmp[$count]['blog'] = $item->blog;
             
             
-            $tmp[$count]['skills_JSON'] = addslashes(Qdskill::toJSON2($item->skills));
+            $tmp[$count]['_skills_JSON'] = addslashes(Qdskill::toJSON2($item->skills));
+            $tmp[$count]['_anchors_JSON'] = addslashes(Qdanchor::toJSON2($item->anchors));
             $count++;
             
         }
