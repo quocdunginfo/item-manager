@@ -25,6 +25,7 @@ class Qdskill extends Qdabstract
 	{
 		//$this->date_create = $dt = new DateTime();
 	}
+    
     public static function toJSON($qdskill_list)
     {
         $tmp = array();
@@ -37,6 +38,7 @@ class Qdskill extends Qdabstract
             $tmp[$count]['desc'] = $item->desc;
             $tmp[$count]['percent'] = $item->percent;
             $tmp[$count]['avatar'] = $item->avatar;
+            $tmp[$count]['isbigskill'] = $item->isbigskill;
             $tmp[$count]['_avatar_link'] = $item->qd_getAvatarLink();
             $tmp[$count]['qdprofile_id'] = $item->qdprofile_id;
             $tmp[$count]['_qdprofile_nickname'] = $item->profile->nickname;

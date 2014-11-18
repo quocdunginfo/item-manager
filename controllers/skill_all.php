@@ -1,6 +1,7 @@
 <?php
 //view arg
 $view_arg = array();
+var_dump($_POST);
 if(isset($_POST['submit']))
 {
     if($_POST['id']>0)
@@ -13,6 +14,7 @@ if(isset($_POST['submit']))
             $tmp->desc = $_POST['desc'];
             $tmp->avatar = $_POST['avatar'];
             $tmp->qdprofile_id = $_POST['qdprofile_id'];
+            $tmp->isbigskill = isset($_POST['isbigskill'])?1:0;
             $tmp->save();
             $view_arg['page'] = $_POST['page'];
             $view_arg['msg'] = 'Cập nhật thành công!';
@@ -31,6 +33,7 @@ if(isset($_POST['submit']))
         $tmp->desc = $_POST['desc'];
         $tmp->avatar = $_POST['avatar'];
         $tmp->qdprofile_id = $_POST['qdprofile_id'];
+        $tmp->isbigskill = isset($_POST['isbigskill'])?1:0;
         $tmp->save();
         $view_arg['obj'] = $tmp;   
         $view_arg['msg'] = 'Thêm thành công!';

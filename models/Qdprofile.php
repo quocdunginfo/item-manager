@@ -24,6 +24,10 @@ class Qdprofile extends ActiveRecord\Model
 	{
 		//$this->date_create = $dt = new DateTime();
 	}
+    public function qd_getBigSkills()
+    {
+        return Qdskill::all(array('conditions'=>array('qdprofile_id = ? AND isbigskill = ?',$this->id,1)));
+    }
     public static function toJSON($qdprofile_list)
     {
         $tmp = array();

@@ -81,6 +81,9 @@ function qd_view_1($arg)
         <?=qd_media_choose('qdAvatarChoose', 'qdAvatar', true)?>
         <button type="button" id="qdAvatarChoose">Choose...</button>
         <br />
+        <label for="jqxAvatar">Is big skill:</label>
+        <input type="checkbox" name="isbigskill" id="qdBigSkill" <?=$arg['obj']->isbigskill==1?'checked:"checked"':''?> />
+        <br />
         <input type="submit" value="Submit" class="jqx-info" name="submit" id="qdSubmit" />
         </form>
     </div>
@@ -99,7 +102,8 @@ function qd_view_1($arg)
                     { name: 'percent', type: 'int' },
                     { name: 'qdprofile_id', type: 'int' },
                     { name: '_qdprofile_nickname', type: 'string' },
-                    { name: 'avatar', type: 'int' },  
+                    { name: 'avatar', type: 'int' },
+                    { name: 'isbigskill', type: 'int' },  
                     { name: '_avatar_link', type: 'string' }                   
                 ],
                 localdata: data
@@ -132,6 +136,7 @@ function qd_view_1($arg)
                 jQuery("#qdPercent").val(datarow.percent);
                 jQuery("#qdAvatar").val(datarow.avatar);
                 jQuery("#qdAvatarImg").attr("src",datarow._avatar_link);
+                jQuery( "#qdBigSkill").prop('checked', datarow.isbigskill==1?true:false);
                 
                 var profile_item = jQuery("#jqxProfile").jqxComboBox('getItemByValue', datarow.qdprofile_id);
                 jQuery("#jqxProfile").jqxComboBox('selectItem', profile_item ); 

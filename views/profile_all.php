@@ -45,7 +45,12 @@ function qd_view_1($arg)
         <label for="qdAddress">Address:</label>
         <input type="text" value="<?=$arg['obj']->address?>" name="address" id="qdAddress" />
         <br />
-
+        <label for="qdIntroTitle">Intro title:</label>
+        <input type="text" value="<?=$arg['obj']->intro_title?>" name="intro_title" id="qdIntroTitle" />
+        <br />
+        <label for="qdIntroDesc">Intro Desc:</label>
+        <input type="text" value="<?=$arg['obj']->intro_desc?>" name="intro_desc" id="qdIntroDesc" />
+        <br />
         <script type="text/javascript">
             function qd_loadJsonToSavedList(data)
             {

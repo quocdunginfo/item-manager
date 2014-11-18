@@ -17,6 +17,8 @@ if(isset($_POST['submit']))
             $tmp->email = $_POST['email'];
             $tmp->phone = $_POST['phone'];
             $tmp->fullname = $_POST['fullname'];
+            $tmp->intro_title = $_POST['intro_title'];
+            $tmp->intro_desc = $_POST['intro_desc'];
             $tmp->save();
             
             
@@ -40,7 +42,9 @@ if(isset($_POST['submit']))
         $tmp->email = $_POST['email'];
         $tmp->phone = $_POST['phone'];
         $tmp->fullname = $_POST['fullname'];
-        
+        $tmp->intro_title = $_POST['intro_title'];
+        $tmp->intro_desc = $_POST['intro_desc'];
+            
         $tmp->save();
         
         
