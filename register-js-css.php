@@ -36,6 +36,10 @@ function qd_theme_name_scripts() {
         wp_enqueue_script( 'script-name-18', plugins_url('plugin/jqwidgets/jqxcalendar.js', QD_FILE), array(), '1.0.0', true );
         wp_enqueue_script( 'script-name-19', plugins_url('plugin/jqwidgets/jqxtooltip.js', QD_FILE), array(), '1.0.0', true );
         wp_enqueue_script( 'script-name-20', plugins_url('plugin/jqwidgets/globalization/globalize.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-21', plugins_url('plugin/jqwidgets/jqxwindow.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-22', plugins_url('plugin/jqwidgets/jqxscrollbar.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-23', plugins_url('plugin/jqwidgets/jqxpanel.js', QD_FILE), array(), '1.0.0', true );
+        wp_enqueue_script( 'script-name-24', plugins_url('plugin/jqwidgets/jqxtabs.js', QD_FILE), array(), '1.0.0', true );
         
     }
 }

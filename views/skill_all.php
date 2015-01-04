@@ -130,6 +130,9 @@ function qd_view_1($arg)
             // display selected row index.
             jQuery("#jqxgrid").on('rowselect', function (event) {
                 var datarow = jQuery("#jqxgrid").jqxGrid('getrowdata', event.args.rowindex);
+                //set final result for parent caller (via iframe)
+                jQuery("#qd-windows-result").val(datarow.id);
+                //end
                 jQuery("#qdID").val(datarow.id);
                 jQuery("#qdTitle").val(datarow.title);
                 jQuery("#qdDesc").val(datarow.desc);
@@ -174,6 +177,8 @@ function qd_view_1($arg)
             
         });
     </script>
+    <!-- for return value from parent caller (vai iframe) -->
+    <input type="hidden" id="qd-windows-result" name="qd-windows-result" value="-1" />
     <div id="jqxNotification">
         <div id="notificationContent">
         </div>
