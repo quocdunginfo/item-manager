@@ -58,10 +58,11 @@ function qd_view_1($arg)
             </div>
             
         </div>
-        <div style="margin-top: 50px; display: none;" id="mainDemoContainer">
+        <div style="width: 100%; height: 650px; margin-top: 50px; display: none;" id="mainDemoContainer">
             <div id="window">
                 <div id="windowHeader">
-                    Title
+                    Skills: 
+                    <button id="getvalue">GET VALUE</button>
                 </div>
                 <div style="overflow: hidden;" id="windowContent">
                     <script>
@@ -75,8 +76,6 @@ function qd_view_1($arg)
                     });
 
                     </script>
-                    <button id="getvalue">GET VALUE</button>
-                    <hr />
                     <iframe id="qdframe" width="100%" height="100%" src="<?=get_admin_url()?>admin.php?page=qd_sub_page_2"></iframe>
                     
                 </div>
