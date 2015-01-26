@@ -40,6 +40,6 @@ function qd_theme_name_scripts() {
         wp_enqueue_script( 'script-name-22', plugins_url('plugin/jqwidgets/jqxscrollbar.js', QD_FILE), array(), '1.0.0', true );
         wp_enqueue_script( 'script-name-23', plugins_url('plugin/jqwidgets/jqxpanel.js', QD_FILE), array(), '1.0.0', true );
         wp_enqueue_script( 'script-name-24', plugins_url('plugin/jqwidgets/jqxtabs.js', QD_FILE), array(), '1.0.0', true );
-        
+        wp_enqueue_script( 'script-name-15', plugins_url('plugin/jqwidgets/jqxgrid.paper.js', QD_FILE), array(), '1.0.0', true );
     }
 }
