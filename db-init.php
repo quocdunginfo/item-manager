@@ -2,16 +2,16 @@
 //WP
 global $wpdb;
 //User define
-define('QD_TABLE_PREFIX', 'qd_');
-define('QD_STUDENT_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'hocsinh');
-define('QD_LOP_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'lop');
-define('QD_OPTION_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'option');
-register_activation_hook(QD_FILE, 'qd_create_plugin_tables' );
+//define('QD_TABLE_PREFIX', 'qd_');
+//define('QD_STUDENT_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'hocsinh');
+//define('QD_LOP_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'lop');
+//define('QD_OPTION_TABLE', $wpdb->prefix . QD_TABLE_PREFIX . 'option');
+//register_activation_hook(QD_FILE, 'qd_create_plugin_tables' );
 function qd_create_plugin_tables()
 {
 	global $wpdb;
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-	
+	/*
 	$table_name = QD_STUDENT_TABLE;
 	
 	//student
@@ -43,7 +43,5 @@ function qd_create_plugin_tables()
       UNIQUE KEY `key` (`key`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 	dbDelta( $sql );
-    
-    
-	
+	*/
 }

@@ -47,7 +47,5 @@ if ( !class_exists('qd_Custom_Nav')) {
         <?php }
     }
 }
- 
 $custom_nav = new qd_Custom_Nav;
- 
 add_action('admin_init', array($custom_nav, 'add_nav_menu_meta_boxes'));
